@@ -1,0 +1,14 @@
+.Container
+{
+    height: 100%;
+    display: flex;
+}
+
+.container_main
+{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

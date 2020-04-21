@@ -1,6 +1,7 @@
 ﻿import React from "react";
 import "./Home.css";
 import take from "./take.jpg";
+import {NavLink} from "react-router-dom";
 
 class Home extends React.Component
 {
@@ -11,7 +12,7 @@ class Home extends React.Component
                 <div>
                     <div className="div_with_img"> <img src={take} /> </div>
                     <div className="btn_panel">
-                        <div className="btn"> Вход </div>
+                        <NavLink to="/take/container" className="nav_link"> <div className="btn"> Вход </div> </NavLink>
                         <div className="btn"> Регистрация </div>
                     </div>
                     
