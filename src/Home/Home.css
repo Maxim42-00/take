@@ -1,7 +1,7 @@
 .Home
 {
     min-height: 100%;
-    background-color: rgb(31, 93, 197);
+    background: linear-gradient(179.73deg, #1488CC 0.33%, #2B32B2 99.66%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,6 +11,12 @@
 {
     display: flex;
     justify-content: space-between;
+    margin: 50px;
+}
+
+.div_with_img
+{
+    margin: 50px;
 }
 
 .btn
@@ -20,11 +26,13 @@
     border-radius: 40px;
     padding: 5px 30px;
     transition-duration: 1s;
+    font-weight: bold;
+    color: blue;
 }
 
 .btn:hover
 {
-    background-color: orange;
+    background: orange;
     color: white;
     transition-duration: 1s;
 }

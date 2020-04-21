@@ -9,7 +9,7 @@ class Home extends React.Component
         return (
             <div className="Home">
                 <div>
-                    <div> <img src={take} /> </div>
+                    <div className="div_with_img"> <img src={take} /> </div>
                     <div className="btn_panel">
                         <div className="btn"> Вход </div>
                         <div className="btn"> Регистрация </div>
