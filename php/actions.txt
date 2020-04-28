@@ -1,0 +1,14 @@
+[
+    {
+        "name": "keyboard",
+        "img": "https://www.technocity.ru/upload/iblock/8c6/z0000096539-1.jpg"
+    },
+    {
+        "name": "monitor",
+        "img": "https://brigo.ru/upload/iblock/9bb/1052400_1.jpg"
+    },
+    {
+        "name": "mouse",
+        "img": "https://cdn.svyaznoy.ru/upload/iblock/ea7/4026292.jpg"
+    }
+]

@@ -7,8 +7,7 @@ class Menu extends React.Component
 {
     render()
     {
-        console.log(this.props.state);
-        let menu_items = this.props.state.menu_items.map((cur, i)=>
+        let menu_items = this.props.menu_items.map((cur, i)=>
             <div><NavLink activeClassName="menu_active_link" className="menu_nav_link" exact to={"/take"+cur.src}> <span className="menu_item"> {cur.name} </span> </NavLink></div>);
         return (
             <div className="Menu">

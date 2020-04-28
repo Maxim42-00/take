@@ -1,0 +1,44 @@
+.NewAccount
+{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input_container
+{   
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.new_account_input
+{
+    height: 7vw;
+    font-size: 6vw;
+    outline: none;
+    border-radius: 0.5rem;
+    font-family: Verdana;
+    margin: 10px;
+}
+
+.ok_btn
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    color: blue;
+    cursor: pointer;
+    background-color: lightgray;
+    transition: 1s;
+}
+
+.ok_btn:hover
+{
+    background-color: orange;
+    color: white;
+    transition: 1s;
+}
