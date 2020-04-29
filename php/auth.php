@@ -1,6 +1,6 @@
 <?php
 
-unset($id);
+unset($incoming_user);
 
 if(isset($_COOKIE["e_mail"]) && isset($_COOKIE["password"]))
 {
@@ -11,7 +11,8 @@ if(isset($_COOKIE["e_mail"]) && isset($_COOKIE["password"]))
         if(($account["e_mail"] === $_COOKIE["e_mail"]) &&
            ($account["password"] === $_COOKIE["password"]))
         {
-            $id=$account["id"];
+            $incoming_user=$account;
+            break;
         }
     }
 }

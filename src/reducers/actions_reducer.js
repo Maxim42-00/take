@@ -28,7 +28,7 @@ function actions_reducer(state = default_state, action)
 console.log(action.data.error);
         if(action.data.error === "non_auth")
         {
-            window.location = "/take/new_account";
+//            window.location = "/take/new_account";
         }
         new_state.items = [...state.items];
         for(let i=0;i<action.data.length;i++)

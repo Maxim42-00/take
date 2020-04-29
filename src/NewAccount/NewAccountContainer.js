@@ -4,11 +4,12 @@ import NewAccount from "./NewAccount";
 function mapStateToProps(state)
 {
     return {
-        name: state.new_account.name,
-        surname: state.new_account.surname,
-        e_mail: state.new_account.e_mail,
-        password: state.new_account.password,
-        waiting: state.new_account.waiting
+        name: state.new_account.name_input_form,
+        surname: state.new_account.surname_input_form,
+        e_mail: state.new_account.e_mail_input_form,
+        password: state.new_account.password_input_form,
+        waiting: state.new_account.waiting,
+        auth: state.new_account.auth
     };
 }
 
