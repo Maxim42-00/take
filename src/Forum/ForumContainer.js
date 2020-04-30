@@ -7,7 +7,8 @@ function mapStateToProps(state)
     return {
         forum_page_auth: state.forum.forum_page_auth,
         messages: state.forum.messages,
-        new_message: state.forum.new_message
+        new_message: state.forum.new_message,
+        have_new_messages: state.forum.have_new_messages
     };
 }
 

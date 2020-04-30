@@ -8,16 +8,18 @@ class Forum extends React.Component
     {
         document.addEventListener("messages_load", (e)=>this.props.messages_load_received(e.data));
         this.props.messages_load_self_send();
+        this.interval = setInterval(this.props.messages_load_self_send, 5000);
         document.getElementById("f_content").scrollTop = document.getElementById("f_content").scrollHeight - document.getElementById("f_content").clientHeight;
     }
     componentDidUpdate()
     {
-        setTimeout(this.props.messages_load_self_send, 5000);
-        document.getElementById("f_content").scrollTop = document.getElementById("f_content").scrollHeight - document.getElementById("f_content").clientHeight;
+        if(this.props.have_new_messages)
+            document.getElementById("f_content").scrollTop = document.getElementById("f_content").scrollHeight - document.getElementById("f_content").clientHeight;
     }
     componentWillUnmount()
     {
         document.removeEventListener("messages_load", (e)=>this.props.messages_load_received(e.data));
+        clearInterval(this.interval);
     }
     render()
     {

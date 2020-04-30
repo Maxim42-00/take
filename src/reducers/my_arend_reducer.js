@@ -4,13 +4,16 @@ const default_state = {
     my_arend_page_auth: true
 };
 
+const host = "https://astro-margo.ru";
+//const host = "http://localhost";
+
 function my_arend_reducer(state = default_state, action)
 {
     let new_state = {...state};
     if(action.type === "MY_AREND_LOAD_ITEMS_SEND")
     {
         new_state.waiting=true;
-        fetch("http://localhost:80/take/php/get_my_arend.php")
+        fetch(host + "/take/php/get_my_arend.php")
             .then(data=>data.json())
             .then(data=>{
                 let E = new Event("my_arend_loaded", {bubbles: true});

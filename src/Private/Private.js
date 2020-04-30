@@ -18,7 +18,9 @@ class Private extends React.Component
     render()
     {
         if(!this.props.private_page_auth)
-            this.props.history.push = "/take/auth";
+        {
+            this.props.history.push("/take/auth");
+        }
         return (
             <div className="Private">
                 {(this.props.waiting ? <Waiting /> : "")}

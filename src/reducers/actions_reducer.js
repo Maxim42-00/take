@@ -7,13 +7,15 @@ let default_state=
     waiting: false
 };
 
+const host = "https://astro-margo.ru";
+//const host = "http://localhost";
 
 function actions_reducer(state = default_state, action)
 {
     let new_state = {...state};
     if(action.type === "LOAD_ITEMS")
     {
-        fetch("http://localhost:80/take/php/actions.php")
+        fetch(host + "/take/php/actions.php")
             .then(data=>data.json())
             .then(data=>{
                 let E = new Event("actions_items_loaded", {bubbles: true});
@@ -54,7 +56,7 @@ function actions_reducer(state = default_state, action)
         let new_data = {...action.arend_date_time};
         new_data.img = new_state.add_window_img;
         let new_data_json = JSON.stringify(new_data);
-        fetch("http://localhost:80/take/php/my_arend_add.php", {method: "POST", body: new_data_json})
+        fetch(host + "/take/php/my_arend_add.php", {method: "POST", body: new_data_json})
             .then(data=>data.json())
             .then(data=>{
                 let E = new Event("add_new_arend", {bubbles: true});

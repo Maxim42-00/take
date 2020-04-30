@@ -12,6 +12,8 @@ const default_state={
     password: ""
 };
 
+const host = "https://astro-margo.ru";
+//const host = "http://localhost";
 
 function new_account_reducer(state = default_state, action)
 {
@@ -29,7 +31,7 @@ function new_account_reducer(state = default_state, action)
             password: state.password_input_form
         };
         let new_account_json = JSON.stringify(new_account);
-        fetch(`http://localhost:80/take/php/create_new_account.php`, {method: "POST", body: new_account_json})
+        fetch(host + "/take/php/create_new_account.php", {method: "POST", body: new_account_json})
             .then(data=>data.json())
             .then(data=>{
                 let E = new Event("account_created", {bubbles: true});
@@ -62,7 +64,7 @@ function new_account_reducer(state = default_state, action)
             password: state.password_input_form
         };
         let input_account_json = JSON.stringify(input_account);
-        fetch("http://localhost:80/take/php/auth_confirm.php", {method: "POST", body: input_account_json}) 
+        fetch(host + "/take/php/auth_confirm.php", {method: "POST", body: input_account_json}) 
             .then(data=>data.json())
             .then(data=>{
                 let E = new Event("auth_confirm", {bubbles: true});
@@ -90,7 +92,7 @@ function new_account_reducer(state = default_state, action)
     }
     if(action.type === "LOAD_INITIAL_FORM_DATA_SEND")  // в личном кабинете
     {
-        fetch("http://localhost:80/take/php/private_auth.php") 
+        fetch(host + "/take/php/private_auth.php") 
             .then(data=>data.json())
             .then(data=>{
                 let E = new Event("auth_confirm", {bubbles: true});
@@ -131,7 +133,7 @@ function new_account_reducer(state = default_state, action)
             password: state.password_input_form
         };
         let new_account_json = JSON.stringify(new_account);
-        fetch("http://localhost:80/take/php/private_update_data.php", {method: "POST", body: new_account_json})
+        fetch(host + "/take/php/private_update_data.php", {method: "POST", body: new_account_json})
             .then(data=>data.json())
             .then(data=>{
                 let E = new Event("private_data_received", {bubbles: true});
@@ -165,7 +167,7 @@ function new_account_reducer(state = default_state, action)
     }
     if(action.type === "QUIT")
     {
-        fetch("http://localhost:80/take/php/quit.php");
+        fetch(host + "/take/php/quit.php");
         new_state.auth = false;
     }
     return new_state;
