@@ -1,5 +1,6 @@
 import Auth from "./Auth";
 import {connect} from "react-redux";
+import {withRouter} from "react-router-dom";
 
 function mapStateToProps(state)
 {
@@ -20,6 +21,8 @@ function mapDispatchToProps(dispatch)
     };
 }
 
-let AuthContainer = connect(mapStateToProps, mapDispatchToProps)(Auth);
+let AuthWithRouter = withRouter(Auth);
+
+let AuthContainer = connect(mapStateToProps, mapDispatchToProps)(AuthWithRouter);
 
 export default AuthContainer;

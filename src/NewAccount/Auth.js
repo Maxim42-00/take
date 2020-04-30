@@ -16,7 +16,7 @@ class Auth extends React.Component
     {
         if(this.props.auth)
         {
-            window.location = "/take/private";
+            this.props.history.push("/take/private");
         }
         return (
             <div className="NewAccount">

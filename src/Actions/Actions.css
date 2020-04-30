@@ -1,5 +1,30 @@
+.Actions
+{
+    display: flex;
+}
+
 .actions_img
 {
     width: 100px;
     height: 100px;
+}
+
+.img_bgr
+{
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.img_hover
+{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+
+.img_hover:hover
+{
+    background-color: rgba(20, 20, 20, 0.5);
 }

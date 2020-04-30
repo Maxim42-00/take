@@ -1,5 +1,6 @@
 import {connect} from "react-redux";
 import NewAccount from "./NewAccount";
+import {withRouter} from "react-router-dom";
 
 function mapStateToProps(state)
 {
@@ -22,6 +23,8 @@ function mapDispatchToProps(dispatch)
     };
 }
 
-let NewAccountContainer = connect(mapStateToProps, mapDispatchToProps)(NewAccount);
+let NewAccountWithRouter = withRouter(NewAccount);
+
+let NewAccountContainer = connect(mapStateToProps, mapDispatchToProps)(NewAccountWithRouter);
 
 export default NewAccountContainer;

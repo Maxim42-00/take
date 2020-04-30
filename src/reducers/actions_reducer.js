@@ -1,12 +1,10 @@
 let default_state=
 {
-    items:
-    [
-        {
-            name: "tesla",
-            img: "https://avatars.mds.yandex.net/get-pdb/2104893/64f693c9-c1d2-4265-8643-982e55e2f11c/s1200?webp=false"
-        }
-    ]
+    items: [],
+    actions_page_auth: true,
+    add_window: false,
+    add_window_img: "",
+    waiting: false
 };
 
 
@@ -22,18 +20,56 @@ function actions_reducer(state = default_state, action)
                 E.data = data;
                 document.dispatchEvent(E);
             });
+        new_state.waiting = true;
     }
     if(action.type === "ACTIONS_ITEMS_RECEIVED")
     {
-console.log(action.data.error);
-        if(action.data.error === "non_auth")
+        if(action.data.status !== "error")
         {
-//            window.location = "/take/new_account";
+            new_state.items = [...state.items];
+            for(let i=0;i<action.data.length;i++)
+            {
+                new_state.items[i] = {...action.data[i]};
+            }
+            new_state.actions_page_auth = true;
+            new_state.waiting = false;
+            return new_state;
         }
-        new_state.items = [...state.items];
-        for(let i=0;i<action.data.length;i++)
+        else
         {
-            new_state.items[i] = {...action.data[i]};
+            new_state.actions_page_auth = false;
+        }
+    }
+    if(action.type === "DISPLAY_ADD_WINDOW")
+    {
+        new_state.add_window = true;
+        new_state.add_window_img = action.img;
+    }
+    if(action.type === "ADD_WINDOW_CANCEL")
+    {
+        new_state.add_window = false;
+    }
+    if(action.type === "ADD_WINDOW_OK_SEND")
+    {
+        let new_data = {...action.arend_date_time};
+        new_data.img = new_state.add_window_img;
+        let new_data_json = JSON.stringify(new_data);
+        fetch("http://localhost:80/take/php/my_arend_add.php", {method: "POST", body: new_data_json})
+            .then(data=>data.json())
+            .then(data=>{
+                let E = new Event("add_new_arend", {bubbles: true});
+                E.data = data;
+                document.dispatchEvent(E);
+            });
+        new_state.waiting = true;
+    }
+    if(action.type === "ADD_WINDOW_OK_RECEIVED")
+    {
+        new_state.waiting = false;
+        new_state.add_window = false;
+        if(action.data.status === "ok")
+        {
+            alert("your id: " + action.data.id);
         }
     }
     return new_state;

@@ -13,8 +13,8 @@
             src: "/actions"
         },
         {
-            name: "Выйти",
-            src: ""
+            name: "Форум",
+            src: "/forum"
         }
     ]
 };

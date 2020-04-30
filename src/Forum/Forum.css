@@ -1,0 +1,39 @@
+.Forum
+{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+}
+
+.forum_content
+{
+    flex-grow: 1;
+    height: 100%;
+    overflow: auto;
+    border: 1px solid black;
+}
+
+.forum_header
+{
+    font-size: 50px;
+}
+
+.new_message
+{
+    font-size: 30px;
+    border-radius: 10px;
+    width: 90%;
+    margin: 10px;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.message_send
+{
+    background-color: lightblue;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 5px 40px;
+    cursor: pointer;
+}

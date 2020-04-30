@@ -31,5 +31,5 @@ if(isset($id))
 }
 else
 {
-    echo "non_auth";
+    echo json_encode(["status"=>"error"]);
 }

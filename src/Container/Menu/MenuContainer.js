@@ -11,7 +11,7 @@ function mapStateToProps(state)
 function mapDispatchToProps(dispatch)
 {
     return {
-        
+        quit: ()=>dispatch({type: "QUIT"})
     };
 }
 

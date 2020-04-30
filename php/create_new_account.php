@@ -18,7 +18,7 @@ foreach($accounts as $account)
 
 if(isset($error))
 {
-    echo $error;
+    echo json_encode(["status"=>"error"]);
     exit();
 }
 else

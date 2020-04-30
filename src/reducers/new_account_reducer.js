@@ -5,6 +5,7 @@ const default_state={
     password_input_form: "",
     waiting: false,
     auth: false,
+    private_page_auth: true,
     name: "",
     surname: "",
     e_mail: "",
@@ -113,11 +114,11 @@ function new_account_reducer(state = default_state, action)
             new_state.e_mail_input_form = action.data.e_mail;
             new_state.password_input_form = action.data.password;
 
-            new_state.auth = true;
+            new_state.private_page_auth = true;
         }
         else
         {
-            new_state.auth = false;
+            new_state.private_page_auth = false;
             alert("error");
         }
     }
@@ -141,7 +142,6 @@ function new_account_reducer(state = default_state, action)
     }
     if(action.type==="UPDATE_PRIVATE_DATA_RECEIVED")
     {
-console.log(action.data);
         new_state["waiting"]=false;
         if(action.data.status === "ok")
         {
@@ -155,12 +155,18 @@ console.log(action.data);
             new_state.e_mail_input_form = action.data.e_mail;
             new_state.password_input_form = action.data.password;
 
-            new_state.auth = true;
+            new_state.private_page_auth = true;
         }
         else
         {
+            new_state.private_page_auth = false;
             alert("error");
         }
+    }
+    if(action.type === "QUIT")
+    {
+        fetch("http://localhost:80/take/php/quit.php");
+        new_state.auth = false;
     }
     return new_state;
 }

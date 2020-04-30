@@ -1,0 +1,39 @@
+.ItemBox
+{
+    width: 500px;
+    padding: 10px;
+    background-color: black;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+.item_box_img
+{
+    width: 100px;
+    height: 100px;
+}
+
+.item_box_date
+{
+    width: 180px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.id_num
+{
+    height: 50px;
+    background-color: orange;
+    width: 100px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: white;
+    font-weight: bold;
+}

@@ -6,13 +6,12 @@ $incoming_user = ["name"=>"Kate", "surname"=>"ostin79", "e_mail"=>"1", "password
 header("Access-Control-Allow-Origin: http://localhost:3000");
 header("Access-Control-Allow-Credentials: true");
 
-
 if(!isset($incoming_user))
 {
     echo json_encode(["status"=>"error"]);
     exit();
 }
 
-$incoming_user["status"] = "ok";
+require_once "verify_my_arend.php";
 
-echo json_encode($incoming_user, JSON_UNESCAPED_UNICODE);
+echo json_encode($new_arend_total[$incoming_user["id"]], JSON_UNESCAPED_UNICODE);

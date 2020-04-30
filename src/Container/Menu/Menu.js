@@ -14,6 +14,7 @@ class Menu extends React.Component
                 <img src={take} className="take_img" />
                 <div className="menu_panel">
                     {menu_items}
+                    <div><NavLink activeClassName="menu_active_link" className="menu_nav_link" exact to={"/take"}> <span className="menu_item" onClick={this.props.quit}> Выйти </span> </NavLink></div>
                 </div>
             </div>
         );
