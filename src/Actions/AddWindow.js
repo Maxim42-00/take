@@ -22,7 +22,7 @@ class AddWindow extends React.Component
         let end_date = new Date(this.end_date.value + " " + this.end_time.value);
         let cur_date = new Date();
 
-    /*    if(start_date < cur_date)
+        if(start_date < cur_date)
         {
             alert("Введите будущее время начала аренды");
             return;
@@ -32,7 +32,7 @@ class AddWindow extends React.Component
         {
             alert("Дата и время начала аренды должны быть позже даты и времени окончания аренды");
             return;
-        }*/
+        }
         let arend_date_time={
             start: Math.floor(start_date.valueOf()/1000),
             end: Math.floor(end_date.valueOf()/1000)

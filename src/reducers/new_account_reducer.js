@@ -51,7 +51,7 @@ function new_account_reducer(state = default_state, action)
         }
         else
         {
-            alert("error");
+         //   alert("error");
             new_state.auth = false;
         }
     }
@@ -85,7 +85,7 @@ function new_account_reducer(state = default_state, action)
         else
         {
             new_state.auth = false;
-            alert("error");
+          //  alert("error");
         }
     }
     if(action.type === "LOAD_INITIAL_FORM_DATA_SEND")  // в личном кабинете
@@ -119,7 +119,7 @@ function new_account_reducer(state = default_state, action)
         else
         {
             new_state.private_page_auth = false;
-            alert("error");
+          //  alert("error");
         }
     }
     if(action.type === "UPDATE_PRIVATE_DATA_SEND")
@@ -160,7 +160,7 @@ function new_account_reducer(state = default_state, action)
         else
         {
             new_state.private_page_auth = false;
-            alert("error");
+         //   alert("error");
         }
     }
     if(action.type === "QUIT")

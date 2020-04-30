@@ -69,7 +69,7 @@ function actions_reducer(state = default_state, action)
         new_state.add_window = false;
         if(action.data.status === "ok")
         {
-            alert("your id: " + action.data.id);
+          //  alert("your id: " + action.data.id);
         }
     }
     return new_state;

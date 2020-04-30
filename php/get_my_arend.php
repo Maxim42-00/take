@@ -14,4 +14,7 @@ if(!isset($incoming_user))
 
 require_once "verify_my_arend.php";
 
-echo json_encode($new_arend_total[$incoming_user["id"]], JSON_UNESCAPED_UNICODE);
+if(isset($new_arend_total[$incoming_user["id"]]))
+    echo json_encode($new_arend_total[$incoming_user["id"]], JSON_UNESCAPED_UNICODE);
+else
+    echo "[]";
