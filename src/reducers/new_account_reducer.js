@@ -24,6 +24,8 @@ function new_account_reducer(state = default_state, action)
     }
     if(action.type==="CREATE_NEW_ACCOUNT_SEND")
     {
+        if(new_state.name_input_form==="" || new_state.surname_input_form==="" || new_state.e_mail_input_form==="" || new_state.password_input_form==="")
+            return new_state;
         let new_account = {
             name: state.name_input_form,
             surname: state.surname_input_form,
@@ -59,6 +61,8 @@ function new_account_reducer(state = default_state, action)
     }
     if(action.type==="AUTH_CONFIRM_SEND")
     {
+        if(new_state.e_mail_input_form==="" || new_state.password_input_form==="")
+            return new_state;
         let input_account = {
             e_mail: state.e_mail_input_form,
             password: state.password_input_form
@@ -126,6 +130,8 @@ function new_account_reducer(state = default_state, action)
     }
     if(action.type === "UPDATE_PRIVATE_DATA_SEND")
     {
+        if(new_state.name_input_form==="" || new_state.surname_input_form==="" || new_state.e_mail_input_form==="" || new_state.password_input_form==="")
+            return new_state;
         let new_account = {
             name: state.name_input_form,
             surname: state.surname_input_form,

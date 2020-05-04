@@ -46,6 +46,8 @@ function forum_reducer(state = default_state, action)
     }
     if(action.type === "MESSAGE_SEND")
     {
+        if(new_state.new_message==="")
+            return new_state;
         let new_message = state.new_message;
         fetch(host + "/take/php/forum.php?message=send", {method: "POST", body: new_message})
             .then(data=>data.json())
