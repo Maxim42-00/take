@@ -4,27 +4,38 @@ import Waiting from "../Waiting/Waiting";
 
 class Auth extends React.Component
 {
+    constructor(props)
+    {
+        super(props);
+        this.redirect_to_private = this.redirect_to_private.bind(this);
+    }
+    redirect_to_private()
+    {
+        this.props.history.push("/take/private");
+    }
     componentDidMount()
     {
-        document.addEventListener("auth_confirm", (e)=>this.props.auth_confirm_received(e.data));
+        if(this.props.auth==="ok") this.redirect_to_private();
     }
-    componentWillUnmount()
+    componentDidUpdate()
     {
-        document.removeEventListener("auth_confirm", ()=>this.props.auth_confirm_received());
+        if(this.props.auth==="ok") this.redirect_to_private();
     }
     render()
     {
-        if(this.props.auth)
+        if(this.props.auth==="ok")
         {
-            this.props.history.push("/take/private");
+            return <div></div>;
         }
+        const e_mail = this.props.e_mail_input_form;
+        const password = this.props.password_input_form;
         return (
             <div className="NewAccount">
                 {(this.props.waiting ? <Waiting /> : "")}
                 <div className="input_container">
-                    <input type="text" className="new_account_input" placeholder="Электронная Почта" value={this.props.e_mail_input_form} onChange={(e)=>this.props.on_change("e_mail_input_form", e.target.value)} />
-                    <input type="password" className="new_account_input" placeholder="Пароль" value={this.props.password_input_form} onChange={(e)=>this.props.on_change("password_input_form", e.target.value)} />
-                    <div className="ok_btn new_account_input" onClick={this.props.auth_confirm_send}> Войти </div>
+                    <input type="text" className="new_account_input" placeholder="Электронная Почта" value={e_mail} onChange={(e)=>this.props.on_change("e_mail_input_form", e.target.value)} />
+                    <input type="password" className="new_account_input" placeholder="Пароль" value={password} onChange={(e)=>this.props.on_change("password_input_form", e.target.value)} />
+                    <div className="ok_btn new_account_input" onClick={()=>this.props.auth_confirm_send(e_mail, password)}> Войти </div>
                 </div>
             </div>
         );

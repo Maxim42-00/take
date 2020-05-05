@@ -4,27 +4,45 @@ import "./Forum.css";
 
 class Forum extends React.Component
 {
+    constructor(props)
+    {
+        super(props);
+        this.redirect_to_auth = this.redirect_to_auth.bind(this);
+        this.scroll_down = this.scroll_down.bind(this);
+    }
+    redirect_to_auth()
+    {
+        this.props.history.push("/take/auth");
+    }
+    scroll_down()
+    {
+        document.getElementById("f_content").scrollTop = document.getElementById("f_content").scrollHeight - document.getElementById("f_content").clientHeight;
+    }
     componentDidMount()
     {
-        document.addEventListener("messages_load", (e)=>this.props.messages_load_received(e.data));
         this.props.messages_load_self_send();
         this.interval = setInterval(this.props.messages_load_self_send, 5000);
-        document.getElementById("f_content").scrollTop = document.getElementById("f_content").scrollHeight - document.getElementById("f_content").clientHeight;
+        this.scroll_down();
     }
     componentDidUpdate()
     {
+        if(this.props.auth==="error")
+        {
+            this.redirect_to_auth();
+            return;
+        }
+
         if(this.props.have_new_messages)
-            document.getElementById("f_content").scrollTop = document.getElementById("f_content").scrollHeight - document.getElementById("f_content").clientHeight;
+            this.scroll_down();
     }
     componentWillUnmount()
     {
-        document.removeEventListener("messages_load", (e)=>this.props.messages_load_received(e.data));
         clearInterval(this.interval);
     }
     render()
     {
-        if(!this.props.forum_page_auth)
-            this.props.history.push("/take/auth");
+        if(this.props.auth==="error")
+            return <div></div>;
         let messages = this.props.messages.map((cur, i)=><Message name={cur.name} ip={cur.ip} time={cur.time} text={cur.text} />);
         return (
             <div className="Forum"> 
@@ -35,7 +53,7 @@ class Forum extends React.Component
                 <div className="new_message">
                     <div> Новое Сообщение </div>
                     <textarea className="new_message" value={this.props.new_message} placeholder="Новое Сообщение" onChange={(e)=>this.props.new_message_on_change(e.target.value)}></textarea>
-                    <div className="message_send" onClick={this.props.message_send}>Отправить</div>
+                    <div className="message_send" onClick={()=>this.props.message_send(this.props.new_message)}>Отправить</div>
                 </div>
             </div>
         );

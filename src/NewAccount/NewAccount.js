@@ -4,29 +4,42 @@ import Waiting from "../Waiting/Waiting";
 
 class NewAccount extends React.Component
 {
+    constructor(props)
+    {
+        super(props);
+        this.redirect_to_private = this.redirect_to_private.bind(this);
+    }
+    redirect_to_private()
+    {
+        this.props.history.push("/take/private");
+    }
     componentDidMount()
     {
-        document.addEventListener("account_created", (e)=>this.props.account_created(e.data));
+        if(this.props.auth==="ok") this.redirect_to_private();
     }
-    componentWillUnmount()
+    componentDidUpdate()
     {
-        document.removeEventListener("account_created", ()=>this.props.account_created());
+        if(this.props.auth==="ok") this.redirect_to_private();
     }
     render()
     {
-        if(this.props.auth)
+        if(this.props.auth==="ok")
         {
-            this.props.history.push("/take/private");
+            return <div></div>;
         }
+        const name = this.props.name;
+        const surname = this.props.surname;
+        const e_mail = this.props.e_mail;
+        const password = this.props.password;
         return (
             <div className="NewAccount">
                 {(this.props.waiting ? <Waiting /> : "")}
                 <div className="input_container">
-                    <input type="text" className="new_account_input" placeholder="Имя" value={this.props.name_input_form} onChange={(e)=>this.props.on_change("name_input_form", e.target.value)} />
-                    <input type="text" className="new_account_input" placeholder="Фамилия" value={this.props.surname_input_form} onChange={(e)=>this.props.on_change("surname_input_form", e.target.value)} />
-                    <input type="text" className="new_account_input" placeholder="Электронная Почта" value={this.props.e_mail_input_form} onChange={(e)=>this.props.on_change("e_mail_input_form", e.target.value)} />
-                    <input type="password" className="new_account_input" placeholder="Пароль" value={this.props.password_input_form} onChange={(e)=>this.props.on_change("password_input_form", e.target.value)} />
-                    <div className="ok_btn new_account_input" onClick={this.props.create_new_account}> Создать Аккаунт </div>
+                    <input type="text" className="new_account_input" placeholder="Имя" value={name} onChange={(e)=>this.props.on_change("name_input_form", e.target.value)} />
+                    <input type="text" className="new_account_input" placeholder="Фамилия" value={surname} onChange={(e)=>this.props.on_change("surname_input_form", e.target.value)} />
+                    <input type="text" className="new_account_input" placeholder="Электронная Почта" value={e_mail} onChange={(e)=>this.props.on_change("e_mail_input_form", e.target.value)} />
+                    <input type="password" className="new_account_input" placeholder="Пароль" value={password} onChange={(e)=>this.props.on_change("password_input_form", e.target.value)} />
+                    <div className="ok_btn new_account_input" onClick={()=>this.props.create_new_account(name, surname, e_mail, password)}> Создать Аккаунт </div>
                 </div>
             </div>
         );

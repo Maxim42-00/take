@@ -13,25 +13,11 @@ function my_arend_reducer(state = default_state, action)
     if(action.type === "MY_AREND_LOAD_ITEMS_SEND")
     {
         new_state.waiting=true;
-        fetch(host + "/take/php/get_my_arend.php")
-            .then(data=>data.json())
-            .then(data=>{
-                let E = new Event("my_arend_loaded", {bubbles: true});
-                E.data = data;
-                document.dispatchEvent(E);
-            });
     }
     if(action.type === "MY_AREND_LOAD_ITEMS_RECEIVED")
     {
         new_state.waiting=false;
-        if(action.data.status==="error")
-        {
-            new_state.my_arend_page_auth = false;
-        }
-        else
-        {
-            new_state.my_arend_items = action.data;
-        }
+        new_state.my_arend_items = action.data;
     }
     return new_state;
 }

@@ -30,14 +30,14 @@ class AddWindow extends React.Component
 
         if(start_date > end_date)
         {
-            alert("Дата и время начала аренды должны быть позже даты и времени окончания аренды");
+            alert("Дата и время начала аренды должны быть раньше даты и времени окончания аренды");
             return;
         }
         let arend_date_time={
             start: Math.floor(start_date.valueOf()/1000),
             end: Math.floor(end_date.valueOf()/1000)
         };
-        this.props.add_window_ok_send(arend_date_time);
+        this.props.add_window_ok_send(this.props.img, arend_date_time);
             
     }
     render()

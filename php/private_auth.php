@@ -1,7 +1,7 @@
 <?php
 
-//require_once("auth.php");
-$incoming_user = ["name"=>"Kate", "surname"=>"ostin79", "e_mail"=>"1", "password"=>"1", "id"=>58];
+require_once("auth.php");
+//$incoming_user = ["name"=>"Max", "surname"=>"Gorbunov", "e_mail"=>"1", "password"=>"1", "id"=>63];
 
 header("Access-Control-Allow-Origin: http://localhost:3000");
 header("Access-Control-Allow-Credentials: true");

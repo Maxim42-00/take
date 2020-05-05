@@ -1,12 +1,13 @@
 import MyArend from "./MyArend";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
+import my_arend_load_items_thunk from "./my_arend_load_items_thunk";
 
 function mapStateToProps(state)
 {
     return {
         waiting: state.my_arend.waiting,
-        my_arend_page_auth: state.my_arend.my_arend_page_auth,
+        auth: state.new_account.auth,
         my_arend_items: state.my_arend.my_arend_items
     };
 }
@@ -14,8 +15,7 @@ function mapStateToProps(state)
 function mapDispatchToProps(dispatch)
 {
     return {
-        my_arend_load_items_send: ()=>dispatch({type: "MY_AREND_LOAD_ITEMS_SEND"}),
-        my_arend_load_items_received: (data)=>dispatch({type: "MY_AREND_LOAD_ITEMS_RECEIVED", data})
+        my_arend_load_items_send: ()=>dispatch(my_arend_load_items_thunk)
     };
 }
 

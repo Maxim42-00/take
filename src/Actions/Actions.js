@@ -5,21 +5,29 @@ import Waiting from "../Waiting/Waiting";
 
 class Actions extends React.Component
 {
+    constructor(props)
+    {
+        super(props);
+        this.redirect_to_auth = this.redirect_to_auth.bind(this);
+    }
+    redirect_to_auth()
+    {
+        this.props.history.push("/take/auth");
+    }
+    componentDidUpdate()
+    {
+        if(this.props.auth==="error") this.redirect_to_auth();
+    }
     componentDidMount()
     {
-        document.addEventListener("actions_items_loaded", (e)=>this.props.items_received(e.data));
         this.props.load_items();
-        window.addEventListener("add_new_arend", (e)=>this.props.add_window_ok_received(e.data));
-    }
-    componentWillUnmount()
-    {
-        document.removeEventListener("actions_items_loaded", (e)=>this.props.items_received(e.data));
-        window.removeEventListener("add_new_arend", (e)=>this.props.add_window_ok_receive(e.data));
     }
     render()
     {
-        if(!this.props.actions_page_auth)
-            this.props.history.push("/take/auth");
+        if(this.props.auth==="error")
+        {
+            return <div></div>;
+        }
         let items = this.props.items.map((cur, i) => <div className="img_bgr"><div className="img_hover" onClick={()=>this.props.display_add_window(cur.img)}></div> <img src={cur.img} className="actions_img" /> </div>);
         return (
             <div className="Actions">

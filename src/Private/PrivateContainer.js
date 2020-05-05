@@ -1,6 +1,8 @@
 import Private from "./Private";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
+import load_initial_form_data_thunk from "./load_initial_form_data_thunk";
+import update_private_data_thunk from "./update_private_data_thunk";
 
 function mapStateToProps(state)
 {
@@ -15,7 +17,7 @@ function mapStateToProps(state)
         e_mail_input_form: state.new_account.e_mail_input_form,
         password_input_form: state.new_account.password_input_form,
 
-        private_page_auth: state.new_account.private_page_auth,
+        auth: state.new_account.auth,
         waiting: state.new_account.waiting,
     };
 }
@@ -23,13 +25,9 @@ function mapStateToProps(state)
 function mapDispatchToProps(dispatch)
 {
     return {
-        auth_confirm_send: ()=>dispatch({type: "AUTH_CONFIRM_SEND"}),
-        auth_confirm_received: (data)=>dispatch({type: "AUTH_CONFIRM_RECEIVED", data: data}),
         on_change: (field, value)=>dispatch({type: "ON_CHANGE", field: field, value: value}),
-        load_initial_form_data_send: ()=>dispatch({type: "LOAD_INITIAL_FORM_DATA_SEND"}),
-        load_initial_form_data_received: (data)=>dispatch({type: "LOAD_INITIAL_FORM_DATA_RECEIVED", data}),
-        update_private_data_send: ()=>dispatch({type: "UPDATE_PRIVATE_DATA_SEND"}),
-        update_private_data_received: (data)=>dispatch({type: "UPDATE_PRIVATE_DATA_RECEIVED", data})
+        load_initial_form_data_send: ()=>dispatch(load_initial_form_data_thunk),
+        update_private_data_send: (name, surname, e_mail, password)=>dispatch(update_private_data_thunk(name, surname, e_mail, password))
     };
 }
 

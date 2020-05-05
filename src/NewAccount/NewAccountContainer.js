@@ -1,6 +1,7 @@
 import {connect} from "react-redux";
 import NewAccount from "./NewAccount";
 import {withRouter} from "react-router-dom";
+import create_new_account_thunk from "./create_new_account_thunk.js";
 
 function mapStateToProps(state)
 {
@@ -18,8 +19,7 @@ function mapDispatchToProps(dispatch)
 {
     return {
         on_change: (field, value)=>dispatch({type: "ON_CHANGE", field: field, value: value}),
-        create_new_account: ()=>dispatch({type: "CREATE_NEW_ACCOUNT_SEND"}),
-        account_created: (data)=>dispatch({type: "CREATE_NEW_ACCOUNT_RECEIVED", data: data})
+        create_new_account: (name, surname, e_mail, password)=>dispatch(create_new_account_thunk(name, surname, e_mail, password))
     };
 }
 

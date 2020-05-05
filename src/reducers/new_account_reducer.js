@@ -4,16 +4,15 @@ const default_state={
     e_mail_input_form: "",
     password_input_form: "",
     waiting: false,
-    auth: false,
-    private_page_auth: true,
+    auth: "",
     name: "",
     surname: "",
     e_mail: "",
     password: ""
 };
 
-const host = "https://astro-margo.ru";
-//const host = "http://localhost";
+//const host = "https://astro-margo.ru";
+const host = "http://localhost:80";
 
 function new_account_reducer(state = default_state, action)
 {
@@ -24,22 +23,6 @@ function new_account_reducer(state = default_state, action)
     }
     if(action.type==="CREATE_NEW_ACCOUNT_SEND")
     {
-        if(new_state.name_input_form==="" || new_state.surname_input_form==="" || new_state.e_mail_input_form==="" || new_state.password_input_form==="")
-            return new_state;
-        let new_account = {
-            name: state.name_input_form,
-            surname: state.surname_input_form,
-            e_mail: state.e_mail_input_form,
-            password: state.password_input_form
-        };
-        let new_account_json = JSON.stringify(new_account);
-        fetch(host + "/take/php/create_new_account.php", {method: "POST", body: new_account_json})
-            .then(data=>data.json())
-            .then(data=>{
-                let E = new Event("account_created", {bubbles: true});
-                E.data = data;
-                document.dispatchEvent(E);
-            });
         new_state["waiting"]=true;
     }
     if(action.type==="CREATE_NEW_ACCOUNT_RECEIVED")
@@ -51,30 +34,15 @@ function new_account_reducer(state = default_state, action)
             new_state.surname = action.data.surname;
             new_state.e_mail = action.data.e_mail;
             new_state.password = action.data.password;
-            new_state.auth = true;
+            new_state.auth = "ok";
         }
         else
         {
-         //   alert("error");
-            new_state.auth = false;
+            new_state.auth = "error";
         }
     }
     if(action.type==="AUTH_CONFIRM_SEND")
     {
-        if(new_state.e_mail_input_form==="" || new_state.password_input_form==="")
-            return new_state;
-        let input_account = {
-            e_mail: state.e_mail_input_form,
-            password: state.password_input_form
-        };
-        let input_account_json = JSON.stringify(input_account);
-        fetch(host + "/take/php/auth_confirm.php", {method: "POST", body: input_account_json}) 
-            .then(data=>data.json())
-            .then(data=>{
-                let E = new Event("auth_confirm", {bubbles: true});
-                E.data = data;
-                document.dispatchEvent(E);
-            });
         new_state["waiting"]=true;
     }
     if(action.type==="AUTH_CONFIRM_RECEIVED")
@@ -86,23 +54,15 @@ function new_account_reducer(state = default_state, action)
             new_state.surname = action.data.surname;
             new_state.e_mail = action.data.e_mail;
             new_state.password = action.data.password;
-            new_state.auth = true;
+            new_state.auth = "ok";
         }
         else
         {
-            new_state.auth = false;
-          //  alert("error");
+            new_state.auth = "error";
         }
     }
     if(action.type === "LOAD_INITIAL_FORM_DATA_SEND")  // в личном кабинете
     {
-        fetch(host + "/take/php/private_auth.php") 
-            .then(data=>data.json())
-            .then(data=>{
-                let E = new Event("auth_confirm", {bubbles: true});
-                E.data = data;
-                document.dispatchEvent(E);
-            });
         new_state["waiting"]=true;
     }
     if(action.type==="LOAD_INITIAL_FORM_DATA_RECEIVED")
@@ -120,32 +80,15 @@ function new_account_reducer(state = default_state, action)
             new_state.e_mail_input_form = action.data.e_mail;
             new_state.password_input_form = action.data.password;
 
-            new_state.private_page_auth = true;
+            new_state.auth = "ok";
         }
         else
         {
-            new_state.private_page_auth = false;
-          //  alert("error");
+            new_state.auth = "error";
         }
     }
     if(action.type === "UPDATE_PRIVATE_DATA_SEND")
     {
-        if(new_state.name_input_form==="" || new_state.surname_input_form==="" || new_state.e_mail_input_form==="" || new_state.password_input_form==="")
-            return new_state;
-        let new_account = {
-            name: state.name_input_form,
-            surname: state.surname_input_form,
-            e_mail: state.e_mail_input_form,
-            password: state.password_input_form
-        };
-        let new_account_json = JSON.stringify(new_account);
-        fetch(host + "/take/php/private_update_data.php", {method: "POST", body: new_account_json})
-            .then(data=>data.json())
-            .then(data=>{
-                let E = new Event("private_data_received", {bubbles: true});
-                E.data = data;
-                document.dispatchEvent(E);
-            });
         new_state["waiting"]=true;
     }
     if(action.type==="UPDATE_PRIVATE_DATA_RECEIVED")
@@ -163,18 +106,21 @@ function new_account_reducer(state = default_state, action)
             new_state.e_mail_input_form = action.data.e_mail;
             new_state.password_input_form = action.data.password;
 
-            new_state.private_page_auth = true;
+            new_state.auth = "ok";
         }
         else
         {
-            new_state.private_page_auth = false;
-         //   alert("error");
+            new_state.auth = "error";
         }
+    }
+    if(action.type==="SET_AUTH")
+    {
+        new_state.auth=action.auth;
     }
     if(action.type === "QUIT")
     {
         fetch(host + "/take/php/quit.php");
-        new_state.auth = false;
+        new_state.auth = "";
     }
     return new_state;
 }

@@ -1,6 +1,7 @@
 import Auth from "./Auth";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
+import auth_confirm_thunk from "./auth_confirm_thunk";
 
 function mapStateToProps(state)
 {
@@ -15,8 +16,7 @@ function mapStateToProps(state)
 function mapDispatchToProps(dispatch)
 {
     return {
-        auth_confirm_send: ()=>dispatch({type: "AUTH_CONFIRM_SEND"}),
-        auth_confirm_received: (data)=>dispatch({type: "AUTH_CONFIRM_RECEIVED", data: data}),
+        auth_confirm_send: (e_mail, password)=>dispatch(auth_confirm_thunk(e_mail, password)),
         on_change: (field, value)=>dispatch({type: "ON_CHANGE", field: field, value: value})
     };
 }
