@@ -14,7 +14,7 @@ function create_new_account_thunk(name_input_form, surname_input_form, e_mail_in
         };
         dispatch({type: "CREATE_NEW_ACCOUNT_SEND"});
         let new_account_json = JSON.stringify(new_account);
-        fetch(host + "/take/php/create_new_account.php", {method: "POST", body: new_account_json})
+        fetch(host + "/take/php/create_new_account.php", {method: "POST", body: new_account_json, credentials: "include"})
             .then(data=>data.json())
             .then(data=>{
                 dispatch({type: "CREATE_NEW_ACCOUNT_RECEIVED", data});

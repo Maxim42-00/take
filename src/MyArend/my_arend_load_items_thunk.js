@@ -3,7 +3,7 @@ const host = "http://localhost";
 function my_arend_load_items_thunk(dispatch)
 {
     dispatch({type: "MY_AREND_LOAD_ITEMS_SEND"});
-    fetch(host + "/take/php/get_my_arend.php")
+    fetch(host + "/take/php/get_my_arend.php", {credentials: "include"})
         .then(data=>data.json())
         .then(data=>{
 console.log(data);

@@ -3,7 +3,7 @@ const host = "http://localhost";
 function load_items_thunk(dispatch)
 {
     dispatch({type: "LOAD_ITEMS"});
-    fetch(host + "/take/php/actions.php")
+    fetch(host + "/take/php/actions.php", {credentials: "include"})
         .then(data=>data.json())
         .then(data=>{
             if(data.status !== "error")

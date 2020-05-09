@@ -6,7 +6,7 @@ function message_send_thunk(msg)
     {
         if(msg==="") return;
         dispatch({type: "MESSAGE_SEND"});
-        fetch(host + "/take/php/forum.php?message=send", {method: "POST", body: msg})
+        fetch(host + "/take/php/forum.php?message=send", {method: "POST", body: msg, credentials: "include"})
             .then(data=>data.json())
             .then(data=>{
                 if(data.status)

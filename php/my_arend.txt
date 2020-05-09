@@ -1,1 +1,1 @@
-{"75":[{"start":1588802340,"end":1590440400,"img":"https:\/\/www.technocity.ru\/upload\/iblock\/8c6\/z0000096539-1.jpg","id":38}],"74":[{"start":1588712400,"end":1590699600,"img":"https:\/\/cdn.svyaznoy.ru\/upload\/iblock\/ea7\/4026292.jpg","id":39},{"start":1589490000,"end":1590008400,"img":"https:\/\/brigo.ru\/upload\/iblock\/9bb\/1052400_1.jpg","id":40}]}
+[]

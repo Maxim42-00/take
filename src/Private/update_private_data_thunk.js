@@ -14,7 +14,7 @@ function update_private_data_thunk(name, surname, e_mail, password)
             password
         };
         let new_account_json = JSON.stringify(new_account);
-        fetch(host + "/take/php/private_update_data.php", {method: "POST", body: new_account_json})
+        fetch(host + "/take/php/private_update_data.php", {method: "POST", body: new_account_json, credentials: "include"})
             .then(data=>data.json())
             .then(data=>{
                 dispatch({type: "UPDATE_PRIVATE_DATA_RECEIVED", data});

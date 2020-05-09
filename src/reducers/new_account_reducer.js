@@ -119,7 +119,7 @@ function new_account_reducer(state = default_state, action)
     }
     if(action.type === "QUIT")
     {
-        fetch(host + "/take/php/quit.php");
+        fetch(host + "/take/php/quit.php", {credentials: "include"});
         new_state.auth = "";
     }
     return new_state;

@@ -1,6 +1,8 @@
 <?php
 
 unset($incoming_user);
+//$incoming_user = ["name"=>"1", "surname"=>"1", "e_mail"=>"1", "password"=>"1", "id"=>77];
+
 
 if(isset($_COOKIE["e_mail"]) && isset($_COOKIE["password"]))
 {
