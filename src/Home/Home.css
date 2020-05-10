@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Yellowtail&display=swap');
+
 .Home
 {
     min-height: 100%;
@@ -19,9 +21,12 @@
     margin: 50px;
 }
 
-.div_with_img
+.div_with_logo
 {
-    margin: 50px;
+    text-align: center;
+    font-family: 'Yellowtail', cursive;
+    font-size: 10vw;
+    color: white;
 }
 
 .btn
@@ -34,6 +39,7 @@
     font-weight: bold;
     color: blue;
     cursor: pointer;
+    margin: 10px;
 }
 
 .btn:hover

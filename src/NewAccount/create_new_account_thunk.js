@@ -1,4 +1,4 @@
-const host = "http://localhost";
+import {host} from "../host";
 
 function create_new_account_thunk(name_input_form, surname_input_form, e_mail_input_form, password_input_form)
 {

@@ -1,20 +1,57 @@
-.Menu
+@import url('https://fonts.googleapis.com/css?family=Yellowtail&display=swap');
+
+@media (min-width: 801px)
 {
-    height: 100%;
-    background: linear-gradient(179.73deg, #1488CC 0.33%, #2B32B2 99.66%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    .Menu
+    {
+        height: 100%;
+        background: linear-gradient(179.73deg, #1488CC 0.33%, #2B32B2 99.66%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .menu_btn
+    {
+        display: none;
+    }
 }
 
-.take_img
+@media (max-width: 800px)
 {
-    width: 200px;
-    padding: 50px;
+    .Menu
+    {
+        top: 0;
+        left: 0;
+        height: 40px;
+        width: 100%;
+        background: linear-gradient(179.73deg, #1488CC 0.33%, #2B32B2 99.66%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+    }
+    .Menu:hover
+    {
+        height: 100%;
+        position: absolute;
+        z-index: 2;
+    }
+    .menu_btn
+    {
+        display: block;
+        color: white;
+        font-size: 30px;
+        text-decoration: none;
+    }
 }
 
-.menu_panel
+.menu_logo
 {
+    color: white;
+    font-size: 40px;
+    font-family: 'Yellowtail', cursive;
+    margin: 40px 20px;
+    white-space: nowrap;
 }
 
 .menu_item

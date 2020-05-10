@@ -1,4 +1,4 @@
-const host = "http://localhost";
+import {host} from "../host";
 
 function load_initial_form_data_thunk(dispatch)
 {

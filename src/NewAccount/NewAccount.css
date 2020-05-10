@@ -42,3 +42,34 @@
     color: white;
     transition: 1s;
 }
+
+.AuthNav
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.auth_nav
+{
+    text-decoration: none;
+}
+
+.auth_nav_div
+{
+    font-size: 6vw;
+    padding: 10px 20px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.auth_nav>.auth_nav_div
+{
+    color: black;
+    background-color: white;
+}
+
+.active_auth_nav>.auth_nav_div
+{
+    color: white;
+    background-color: black;
+}

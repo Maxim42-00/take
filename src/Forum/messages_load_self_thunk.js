@@ -1,4 +1,4 @@
-const host = "http://localhost";
+import {host} from "../host";
 
 function messages_load_self_thunk(dispatch)
 {

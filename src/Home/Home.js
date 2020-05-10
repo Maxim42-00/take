@@ -10,7 +10,7 @@ class Home extends React.Component
         return (
             <div className="Home">
                 <div>
-                    <div className="div_with_img"> <img className="home_img" src={take} /> </div>
+                    <div className="div_with_logo"> Astro-Margo.ru </div>
                     <div className="btn_panel">
                         <NavLink to="/take/auth" className="nav_link"> <div className="btn"> Вход </div> </NavLink>
                         <NavLink to="/take/new_account" className="nav_link"> <div className="btn"> Регистрация </div> </NavLink>

@@ -7,7 +7,20 @@ class Waiting extends React.Component
     {
         return (
             <div className="Waiting">
-                <div className="waiting_content"> Waiting <div className="rotate"> </div> </div>
+                <div className="lds-spinner">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
             </div>
         );
     }

@@ -1,4 +1,4 @@
-const host = "http://localhost";
+import {host} from "../host";
 
 function auth_confirm_thunk(e_mail_input_form, password_input_form)
 {

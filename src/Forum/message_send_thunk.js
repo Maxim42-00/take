@@ -1,4 +1,4 @@
-const host = "http://localhost";
+import {host} from "../host";
 
 function message_send_thunk(msg)
 {

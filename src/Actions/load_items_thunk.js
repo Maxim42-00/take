@@ -1,4 +1,4 @@
-const host = "http://localhost";
+import {host} from "../host";
 
 function load_items_thunk(dispatch)
 {

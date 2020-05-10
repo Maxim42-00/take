@@ -1,4 +1,4 @@
-const host = "http://localhost";
+import {host} from "../host";
 
 function add_window_ok_thunk(img, arend_date_time)
 {

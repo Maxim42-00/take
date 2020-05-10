@@ -1,4 +1,4 @@
-const host = "http://localhost";
+import {host} from "../host";
 
 function my_arend_load_items_thunk(dispatch)
 {

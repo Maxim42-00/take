@@ -1,3 +1,5 @@
+import {host} from "../host";
+
 const default_state={
     name_input_form: "",
     surname_input_form: "",
@@ -10,9 +12,6 @@ const default_state={
     e_mail: "",
     password: ""
 };
-
-//const host = "https://astro-margo.ru";
-const host = "http://localhost:80";
 
 function new_account_reducer(state = default_state, action)
 {

@@ -1,6 +1,7 @@
 ﻿import React from "react";
 import "./NewAccount.css";
 import Waiting from "../Waiting/Waiting";
+import AuthNav from "./AuthNav";
 
 class NewAccount extends React.Component
 {
@@ -35,6 +36,7 @@ class NewAccount extends React.Component
             <div className="NewAccount">
                 {(this.props.waiting ? <Waiting /> : "")}
                 <div className="input_container">
+                    <AuthNav />
                     <input type="text" className="new_account_input" placeholder="Имя" value={name} onChange={(e)=>this.props.on_change("name_input_form", e.target.value)} />
                     <input type="text" className="new_account_input" placeholder="Фамилия" value={surname} onChange={(e)=>this.props.on_change("surname_input_form", e.target.value)} />
                     <input type="text" className="new_account_input" placeholder="Электронная Почта" value={e_mail} onChange={(e)=>this.props.on_change("e_mail_input_form", e.target.value)} />

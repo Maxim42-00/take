@@ -1,4 +1,4 @@
-const host = "http://localhost";
+import {host} from "../host";
 
 function update_private_data_thunk(name, surname, e_mail, password)
 {
