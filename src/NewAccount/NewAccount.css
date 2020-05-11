@@ -16,8 +16,8 @@
 
 .new_account_input
 {
-    height: 7vw;
-    font-size: 6vw;
+    height: 5vw;
+    font-size: 4vw;
     outline: none;
     border-radius: 0.5rem;
     font-family: Verdana;
@@ -34,6 +34,7 @@
     cursor: pointer;
     background-color: lightgray;
     transition: 1s;
+    padding: 5px;
 }
 
 .ok_btn:hover
@@ -56,7 +57,7 @@
 
 .auth_nav_div
 {
-    font-size: 6vw;
+    font-size: 4vw;
     padding: 10px 20px;
     border: 1px solid black;
     cursor: pointer;
